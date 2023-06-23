@@ -1,0 +1,2 @@
+# Spring Boot Starter
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.weiwei.easyapiclientsdk.EasyApiClientConfig
