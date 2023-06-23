@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         {
           key: 'Easy API',
           title: 'Easy API',
-          href: 'https://pro.ant.design',
+          href: 'https://gitee.com/weiweibiubiu/easy-api-master',
           blankTarget: true,
         },
         {
