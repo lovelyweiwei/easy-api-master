@@ -24,7 +24,8 @@ public class AvatarController {
     public String getAvatarUrlByPost(@RequestBody(required = false) AvatarParams avatarParams, HttpServletRequest request) throws Exception {
     //public String getAvatarUrlByPost(AvatarParams avatarParams, HttpServletRequest request) throws Exception {
         //https://restapi.amap.com/v3/weather/weatherInfo?
-        String avatarUrl = "http://www.loliapi.com/acg/pp/";
+        // https 不能是http 否则拿不到图片
+        String avatarUrl = "https://www.loliapi.com/acg/pp/";
 //        HashMap<String, Object> paramMap = new HashMap<>();
 //        paramMap.put("type", "json");
 //        paramMap.put("tx", "b1");

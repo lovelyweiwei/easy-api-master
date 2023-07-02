@@ -45,10 +45,6 @@ public class InterfaceInfoController {
     @Resource
     private UserService userService;
 
-    @Resource
-    private EasyApiClient easyApiClient;
-
-
     // region 增删改查
 
     /**

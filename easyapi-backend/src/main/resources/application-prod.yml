@@ -1,6 +1,6 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://139.9.104.196:3306/easyapi
+    url: jdbc:mysql://localhost:3306/easyapi
     username: root
-    password: 666
+    password:
