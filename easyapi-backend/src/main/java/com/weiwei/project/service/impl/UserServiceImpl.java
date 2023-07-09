@@ -4,11 +4,16 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.weiwei.common.model.entity.InterfaceInfo;
 import com.weiwei.common.model.entity.User;
+import com.weiwei.common.model.entity.UserInterfaceInfo;
+import com.weiwei.easyapiclientsdk.client.EasyApiClient;
 import com.weiwei.project.common.ErrorCode;
 import com.weiwei.project.constant.UserConstant;
 import com.weiwei.project.exception.BusinessException;
 import com.weiwei.project.mapper.UserMapper;
+import com.weiwei.project.service.InterfaceInfoService;
+import com.weiwei.project.service.UserInterfaceInfoService;
 import com.weiwei.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +22,10 @@ import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 
 
 /**
@@ -31,6 +40,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private InterfaceInfoService interfaceInfoService;
+
+    @Resource
+    private UserInterfaceInfoService userInterfaceInfoService;
 
     /**
      * 盐值，混淆密码
@@ -72,12 +87,48 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             user.setUserPassword(encryptPassword);
             user.setAccessKey(accessKey);
             user.setSecretKey(secretKey);
+            //加入头像
+            String avatarUrl = "https://www.loliapi.com/acg/pp/";
+            String redirectUrl = null;
+            try {
+                redirectUrl = getRedirectUrl(avatarUrl);
+            } catch (Exception e) {
+                throw new BusinessException(ErrorCode.SYSTEM_ERROR);
+            }
+            user.setUserAvatar(redirectUrl);
+            //保存
             boolean saveResult = this.save(user);
             if (!saveResult) {
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");
             }
+            //添加免费次数
+            UserInterfaceInfo userInterfaceInfo = null;
+            List<InterfaceInfo> interfaceInfos = interfaceInfoService.list();
+            for (InterfaceInfo interfaceInfo : interfaceInfos) {
+                userInterfaceInfo=new UserInterfaceInfo();
+                userInterfaceInfo.setUserId(user.getId());
+                userInterfaceInfo.setInterfaceInfoId(interfaceInfo.getId());
+                userInterfaceInfo.setTotalNum(0);
+                userInterfaceInfo.setLeftNum(100);
+                userInterfaceInfoService.save(userInterfaceInfo);
+            }
             return user.getId();
         }
+    }
+
+    /**
+     * 获取重定向地址
+     * @param path
+     * @return
+     * @throws Exception
+     */
+    private String getRedirectUrl(String path) throws Exception {
+        HttpURLConnection conn = (HttpURLConnection) new URL(path)
+                .openConnection();
+        conn.setInstanceFollowRedirects(false);
+        conn.setConnectTimeout(5000);
+        String location = conn.getHeaderField("Location");
+        return location;
     }
 
     @Override

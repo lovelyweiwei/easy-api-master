@@ -18,8 +18,8 @@ export async function getRoutes() {
 '8': React.lazy(() => import(/* webpackChunkName: "p__Admin__InterfaceInfo__index" */'@/pages/Admin/InterfaceInfo/index.tsx')),
 '9': React.lazy(() => import(/* webpackChunkName: "p__Admin__InterfaceAnalysis__index" */'@/pages/Admin/InterfaceAnalysis/index.tsx')),
 '10': React.lazy(() => import(/* webpackChunkName: "p__404" */'@/pages/404.tsx')),
-'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'E:/Code/Projects/easyapi-frontend/src/.umi/plugin-layout/Layout.tsx')),
-'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'E:/Code/Projects/easyapi-frontend/src/.umi/plugin-openapi/openapi.tsx')),
+'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'E:/Code/Projects/easy-api-master/easyapi-frontend/src/.umi/plugin-layout/Layout.tsx')),
+'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'E:/Code/Projects/easy-api-master/easyapi-frontend/src/.umi/plugin-openapi/openapi.tsx')),
 },
   };
 }

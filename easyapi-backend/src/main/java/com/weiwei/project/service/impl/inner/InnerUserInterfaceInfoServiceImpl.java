@@ -50,7 +50,8 @@ public class InnerUserInterfaceInfoServiceImpl implements InnerUserInterfaceInfo
         userInterfaceInfo.setInterfaceInfoId(interfaceInfoId);
         userInterfaceInfo.setUserId(userId);
         userInterfaceInfo.setLeftNum(100);  //默认100次
-        return userInterfaceInfoMapper.insert(userInterfaceInfo);
+        int insert = userInterfaceInfoMapper.insert(userInterfaceInfo);
+        return insert;
     }
 }
 

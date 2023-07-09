@@ -170,7 +170,8 @@ const Center: React.FC<RouteChildrenProps> = () => {
               <div>
                 <div className={styles.avatarHolder}>
                   <img alt="" src={currentUser.userAvatar} />
-                  <div className={styles.name}>{currentUser.userName}</div>
+                  {/*<div className={styles.name}>{currentUser.userName}</div>*/}
+                  <div className={styles.name}>{currentUser.userAccount}</div>
                   <div>{currentUser?.signature}</div>
                 </div>
                 {renderUserInfo(currentUser)}

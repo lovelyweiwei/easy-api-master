@@ -54,14 +54,13 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({menu}) => {
         return;
       }
       if (key === 'download') {
-        // history.push('http://139.9.104.196/sdk/easyapi-client-sdk-0.0.1.jar');
         handleDownload();
         return;
       }
       history.push(`/account/${key}`);
     },
     [setInitialState],
-  );
+  )
 
   const loading = (
     <span className={`${styles.action} ${styles.account}`}>

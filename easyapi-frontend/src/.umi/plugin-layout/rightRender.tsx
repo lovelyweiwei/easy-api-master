@@ -3,7 +3,7 @@
 // DO NOT CHANGE IT MANUALLY!
 import React from 'react';
 import { Avatar, version, Dropdown, Menu, Spin } from 'antd';
-import { LogoutOutlined } from 'E:/Code/Projects/easyapi-frontend/node_modules/@ant-design/icons';
+import { LogoutOutlined } from 'E:/Code/Projects/easy-api-master/easyapi-frontend/node_modules/@ant-design/icons';
 
 export function getRightRenderContent (opts: {
    runtimeConfig: any,

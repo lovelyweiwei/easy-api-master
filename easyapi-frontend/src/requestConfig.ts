@@ -27,7 +27,7 @@ interface ResponseStructure {
 export const requestConfig: RequestConfig = {
   // baseURL: 'http://localhost:8101',
   // 部署 服务器地址
-  baseURL: 'http://xxxxxxxxxx:8101',
+  baseURL: 'http://你的服务器地址:8101',
   withCredentials: true,
   // 请求拦截器
   requestInterceptors: [

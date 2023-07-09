@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import com.weiwei.common.model.entity.User;
+import com.weiwei.easyapiclientsdk.client.EasyApiClient;
+import com.weiwei.easyapiclientsdk.model.UserParams;
 import com.weiwei.project.exception.BusinessException;
 import com.weiwei.project.common.BaseResponse;
 import com.weiwei.project.common.DeleteRequest;

@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/easyapi
     username: root
-    password:
+    password: xxx
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -20,7 +20,7 @@ spring:
     host: 192.168.40.129  # 虚拟机地址
 #    host: localhost  #服务器地址
     database: 0
-    password:  # 设置密码
+    password: xxx # 设置密码
 
 server:
   port: 8101
