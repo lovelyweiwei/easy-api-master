@@ -24,9 +24,9 @@ const Footer: React.FC = () => {
           blankTarget: true,
         },
         {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          key: '简单 API ',
+          title: '简单 API',
+          href: 'https://github.com/lovelyweiwei/easy-api-master',
           blankTarget: true,
         },
       ]}
