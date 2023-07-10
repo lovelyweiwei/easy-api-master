@@ -26,16 +26,15 @@ interface ResponseStructure {
  */
 export const requestConfig: RequestConfig = {
   baseURL: 'http://localhost:8101',
-  // 部署 服务器地址
-  // baseURL: 'http://你的服务器地址:8101',
+  // baseURL: 'http://你的服务器地址:8101',   // 部署服务器地址
   withCredentials: true,
   // 请求拦截器
   requestInterceptors: [
-    (config: RequestOptions) => {
-      // 拦截请求配置，进行个性化处理。
-      const url = config?.url?.concat('?token = 123');
-      return { ...config, url };
-    },
+    // (config: RequestOptions) => {
+    //   // 拦截请求配置，进行个性化处理。
+    //   const url = config?.url?.concat('?token = 123');
+    //   return { ...config, url };
+    // },
   ],
 
   // 响应拦截器

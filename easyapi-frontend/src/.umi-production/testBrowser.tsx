@@ -3,14 +3,14 @@
 // DO NOT CHANGE IT MANUALLY!
 import React, { useEffect, useState } from 'react';
 import { ApplyPluginsType } from 'umi';
-import { renderClient, RenderClientOpts } from 'E:/Code/Projects/easy-api-master/easyapi-frontend/node_modules/@umijs/preset-umi/node_modules/@umijs/renderer-react';
+import { renderClient, RenderClientOpts } from 'E:/Java/Code/Projects/easy-api-master/easyapi-frontend/node_modules/@umijs/preset-umi/node_modules/@umijs/renderer-react';
 import { createHistory } from './core/history';
 import { createPluginManager } from './core/plugin';
 import { getRoutes } from './core/route';
 import type { Location } from 'history';
 
-import 'E:/Code/Projects/easy-api-master/easyapi-frontend/src/global.less';
-import 'E:/Code/Projects/easy-api-master/easyapi-frontend/src/global.tsx';
+import 'E:/Java/Code/Projects/easy-api-master/easyapi-frontend/src/global.less';
+import 'E:/Java/Code/Projects/easy-api-master/easyapi-frontend/src/global.tsx';
 import 'antd/dist/antd.less';
 const publicPath = '/';
 const runtimePublicPath = false;

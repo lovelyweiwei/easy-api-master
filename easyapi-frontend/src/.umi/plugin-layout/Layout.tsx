@@ -86,7 +86,7 @@ export default (props: any) => {
   "splitMenus": false,
   "title": "EasyApi开放平台",
   "pwa": false,
-  "logo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+  "logo": "http://139.9.104.196/logo.svg",
   "iconfontUrl": ""
 };
 const formatMessage = undefined;

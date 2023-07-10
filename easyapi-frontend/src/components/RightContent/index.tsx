@@ -44,14 +44,14 @@ const GlobalHeaderRight: React.FC = () => {
       {/*  //   console.log('input', value);*/}
       {/*  // }}*/}
       {/*/>*/}
-      <span
-        className={styles.action}
-        onClick={() => {
-          window.open('https://pro.ant.design/docs/getting-started');
-        }}
-      >
-        <QuestionCircleOutlined />
-      </span>
+      {/*<span*/}
+      {/*  className={styles.action}*/}
+      {/*  onClick={() => {*/}
+      {/*    window.open('https://pro.ant.design/docs/getting-started');*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <QuestionCircleOutlined />*/}
+      {/*</span>*/}
       <Avatar />
     </Space>
   );

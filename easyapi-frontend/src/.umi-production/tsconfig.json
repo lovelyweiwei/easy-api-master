@@ -27,7 +27,7 @@
         "src/.umi/*"
       ],
       "@umijs/max": [
-        "E:\\Code\\Projects\\easy-api-master\\easyapi-frontend\\node_modules\\umi"
+        "E:\\Java\\Code\\Projects\\easy-api-master\\easyapi-frontend\\node_modules\\umi"
       ],
       "@umijs/max/typings": [
         "src/.umi/typings"
