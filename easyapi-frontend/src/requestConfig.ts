@@ -25,8 +25,8 @@ interface ResponseStructure {
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const requestConfig: RequestConfig = {
-  baseURL: 'http://localhost:8101',
-  // baseURL: 'http://你的服务器地址:8101',   // 部署服务器地址
+  // baseURL: 'http://localhost:8101',
+  baseURL: 'http://api.ggbond.online:8101',   // 部署服务器地址
   withCredentials: true,
   // 请求拦截器
   requestInterceptors: [

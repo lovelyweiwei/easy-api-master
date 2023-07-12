@@ -19,7 +19,7 @@ const Settings: LayoutSettings & {
   splitMenus: false,
   title: 'EasyApi开放平台',
   pwa: false,
-  logo: 'http://139.9.104.196/logo.svg',
+  logo: 'http://api.ggbond.online/logo.svg',
   iconfontUrl: '',
 };
 
