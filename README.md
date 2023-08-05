@@ -13,7 +13,7 @@
 
 - 首页
 
-![微信截图_20230805223703](C:\Users\Administrator\Desktop\mian\images\微信截图_20230805223703.png)
+![微信截图_20230805223703](https://github.com/lovelyweiwei/easy-api-master/images/微信截图_20230805223703.png)
 
 
 
