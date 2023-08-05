@@ -10,6 +10,19 @@ spring:
           uri: http://localhost:8123
           predicates:
             - Path=/api/**
+          filters:
+            - RequestHeaderSize=1000B   #请求限制，请求头大小不超过 1000B
+            - RemoveResponseHeader=X-Response-Foo   #信息脱敏
+      httpclient: # 设置超时时间 10s
+        connect-timeout: 1000
+        response-timeout: 10s
+  redis:
+#    host: 192.168.40.129  # 虚拟机地址
+    host: localhost  #服务器地址
+    port: 6379
+    database: 2
+    password: 666 # 设置密码
+
 
 dubbo:
   application:

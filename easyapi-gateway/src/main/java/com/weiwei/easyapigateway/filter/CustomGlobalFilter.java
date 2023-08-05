@@ -16,6 +16,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.core.io.buffer.DataBufferUtils;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -26,10 +27,12 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 全局过滤
@@ -41,6 +44,9 @@ import java.util.List;
 @Slf4j
 @Component
 public class CustomGlobalFilter implements GlobalFilter, Ordered {
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1");
 
@@ -72,9 +78,9 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         log.info("请求来源地址：" + sourceAddress);
         ServerHttpResponse response = exchange.getResponse();
         // 2.访问控制--黑白名单
-        //if (!IP_WHITE_LIST.contains(sourceAddress)) {
-        //    return handleNoAuth(response);
-        //}
+        if (!IP_WHITE_LIST.contains(sourceAddress)) {
+            return handleNoAuth(response);
+        }
         // 3.用户鉴权 (判断 ak.sk 是否合法)
         HttpHeaders headers = request.getHeaders();
         String accessKey = headers.getFirst("accessKey");
@@ -82,6 +88,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         String timestamp = headers.getFirst("timestamp");
         String body = headers.getFirst("body");
         String sign = headers.getFirst("sign");
+        String source = headers.getFirst("source");
         // 实际情况是去数据库中查找
         User invokeUser = null;
         try {
@@ -95,15 +102,30 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         if (Long.parseLong(nonce) > 10000) {
             return handleNoAuth(response);
         }
-        // 时间和当前时间不能超过5分钟
+        // 流量染色，避免绕过网关请求
+        if (!"gateway".equals(source)) {
+            return handleNoAuth(response);
+        }
+        // 时间和当前时间不能超过5分钟  防重放攻击
         Long currentTime = System.currentTimeMillis() / 1000;
         Long FIVE_MINUTES = 60 * 5L;
         if ((currentTime - Long.parseLong(timestamp)) > FIVE_MINUTES) {
             return handleNoAuth(response);
         }
+        // 5分钟内 防重放攻击
+        if (nonce != null) {
+            // 判断是否重复请求
+            String ak = stringRedisTemplate.opsForValue().get(nonce);
+            if (ak != null) {
+                return handleNoAuth(response);
+            } else {
+                stringRedisTemplate.opsForValue().set(nonce, accessKey, 5, TimeUnit.MINUTES); //5分钟后timestamp会拦截超过5分钟的请求
+                System.out.println(stringRedisTemplate.opsForValue().get(nonce));
+            }
+        }
         // 实际情况是从数据库中查出 secretKey
         String secretKey = invokeUser.getSecretKey();
-        String serverSign = SignUtils.getSign(body, secretKey);
+        String serverSign = SignUtils.getSign(body, secretKey, nonce, timestamp);
         if (sign == null || !sign.equals(serverSign)) {
             return handleNoAuth(response);
         }

@@ -3,12 +3,12 @@ package com.weiwei.easyapiclientsdk.client;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpUtil;
 
 import com.weiwei.easyapiclientsdk.utils.SignUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * 调用第三方接口的客户端
@@ -21,9 +21,10 @@ public class EasyApiClient {
 
     public static String GATEWAY_HOST = "http:/localhost:8090";
 
-    public void setGATEWAY_HOST(String gateway_Host){
-        this.GATEWAY_HOST=gateway_Host;
+    public void setGATEWAY_HOST(String gateway_Host) {
+        this.GATEWAY_HOST = gateway_Host;
     }
+
     private String accessKey;
 
     private String secretKey;
@@ -54,7 +55,7 @@ public class EasyApiClient {
     //}
 
     private Map<String, String> getHeaderMap(String body) {
-        if (body == null){
+        if (body == null) {
             body = "zw";
         }
         Map<String, String> hasMap = new HashMap<>();
@@ -64,7 +65,8 @@ public class EasyApiClient {
         hasMap.put("nonce", nonce);
         hasMap.put("body", body);
         hasMap.put("timestamp", currentTime);
-        hasMap.put("sign", SignUtils.getSign(body, secretKey));
+        hasMap.put("source", "gateway"); //流量染色
+        hasMap.put("sign", SignUtils.getSign(body, secretKey, nonce, currentTime));
         return hasMap;
     }
 
@@ -91,7 +93,7 @@ public class EasyApiClient {
     //    return result;
     //}
 
-    public String onlineInvoke(String parameters,String url) {
+    public String onlineInvoke(String parameters, String url) {
         HttpResponse httpResponse = HttpRequest.post(GATEWAY_HOST + url)
                 .addHeaders(getHeaderMap(parameters))
                 .body(parameters)

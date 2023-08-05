@@ -15,9 +15,10 @@ public class SignUtils {
      * @param secretKey
      * @return
      */
-    public static String getSign(String body, String secretKey) {
-        Digester md5=new Digester(DigestAlgorithm.SHA256);
-        String content= body + "." + secretKey;
+    public static String getSign(String body, String secretKey, String nonce, String timestamp) {
+        Digester md5 = new Digester(DigestAlgorithm.SHA256);
+        String content = body + "." + secretKey + "." + nonce + "." + timestamp;
+        System.out.println(content);
         return md5.digestHex(content);
     }
 }
