@@ -13,7 +13,7 @@
 
 - 首页
 
-![微信截图_20230805223703](https://github.com/lovelyweiwei/easy-api-master/images/微信截图_20230805223703.png)
+![微信截图_20230805223703](images/微信截图_20230805223703.png)
 
 
 
@@ -21,9 +21,9 @@
 
 - 接口详情
 
-  ![image-20230805223913385](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230805223913385.png)
+  ![image-20230805223913385](images/image-20230805223913385.png)
 
-  ![image-20230805223951196](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230805223951196.png)
+  ![image-20230805223951196](images/image-20230805223951196.png)
 
 
 
@@ -31,7 +31,7 @@
 
 - 接口管理
 
-![image-20230805224138432](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230805224138432.png)
+![image-20230805224138432](images/image-20230805224138432.png)
 
 
 
@@ -39,7 +39,7 @@
 
 - 接口分析
 
-![image-20230805224225518](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230805224225518.png)
+![image-20230805224225518](images/image-20230805224225518.png)
 
 
 
@@ -47,7 +47,7 @@
 
 - 个人中心
 
-![image-20230805224240070](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230805224240070.png)
+![image-20230805224240070](images/image-20230805224240070.png)
 
 
 
@@ -55,7 +55,7 @@
 
 - SDK下载
 
-![image-20230805224308548](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230805224308548.png)
+![image-20230805224308548](images/image-20230805224308548.png)
 
 ---
 
@@ -73,7 +73,7 @@ API平台有很多，但是不够统一，本平台帮助企业、个人统一�
 
 ## 系统架构
 
-   ![系统架构](C:\Users\Administrator\Desktop\系统架构.png)
+   ![系统架构](images/系统架构.png)
 
 
 
