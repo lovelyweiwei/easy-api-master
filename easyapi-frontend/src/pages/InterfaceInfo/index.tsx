@@ -43,14 +43,21 @@ const Index: React.FC = () => {
     }
     //域名接口
     if (Number(params.id) === 4) {
-      param.domain = '';
+      param.city = '';
     }
     if (Number(params.id) === 5) {
-      param.qq = '';
+      param.ip = '';
     }
     //用户名接口
     if (Number(params.id) === 6) {
       param.username = 'zhangsan';
+    }
+    if (Number(params.id) === 7) {
+      param.qq = '';
+    }
+    //域名接口
+    if (Number(params.id) === 8) {
+      param.domain = '';
     }
     setLoading(true);
     try {

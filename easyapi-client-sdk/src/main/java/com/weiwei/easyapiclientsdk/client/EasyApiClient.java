@@ -6,6 +6,8 @@ import cn.hutool.http.HttpResponse;
 
 import com.weiwei.easyapiclientsdk.utils.SignUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,12 +60,18 @@ public class EasyApiClient {
         if (body == null) {
             body = "zw";
         }
+        String encode = null;
+        try {
+            encode = URLEncoder.encode(body, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
         Map<String, String> hasMap = new HashMap<>();
         String nonce = RandomUtil.randomNumbers(4);
         String currentTime = String.valueOf(System.currentTimeMillis() / 1000);
         hasMap.put("accessKey", accessKey);
         hasMap.put("nonce", nonce);
-        hasMap.put("body", body);
+        hasMap.put("body", encode);
         hasMap.put("timestamp", currentTime);
         hasMap.put("source", "gateway"); //流量染色
         hasMap.put("sign", SignUtils.getSign(body, secretKey, nonce, currentTime));

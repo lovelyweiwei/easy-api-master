@@ -19,7 +19,7 @@ public class QQController {
 
     @PostMapping("/isOnline")
     public String getQQIsOnlineByPost(@RequestBody(required = false) QQParams qqParams, HttpServletRequest request) throws Exception {
-        String qqUrl = "http://api.btstu.cn/qqol/api.php";
+        String qqUrl = "https://api.vvhan.com/api/qqcode";
         HashMap<String, Object> paramMap = new HashMap<>();
         if (qqParams == null) {
             qqParams = new QQParams();

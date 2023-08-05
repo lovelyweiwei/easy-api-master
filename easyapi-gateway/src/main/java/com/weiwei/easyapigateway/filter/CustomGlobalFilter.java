@@ -28,6 +28,9 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,7 +89,12 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         String accessKey = headers.getFirst("accessKey");
         String nonce = headers.getFirst("nonce");
         String timestamp = headers.getFirst("timestamp");
-        String body = headers.getFirst("body");
+        String body = null;
+        try {
+            body = URLDecoder.decode(headers.getFirst("body"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
         String sign = headers.getFirst("sign");
         String source = headers.getFirst("source");
         // 实际情况是去数据库中查找
