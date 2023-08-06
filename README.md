@@ -50,6 +50,7 @@ API平台有很多，但是不够统一，本平台帮助企业、个人统一�
 - 服务调用：Dubbo
 - 网关：Spring Cloud Gateway
 - 前后端联调：Swagger，Knife4j
+- 发送请求：Hutool 
 
 
 
