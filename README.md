@@ -2,7 +2,7 @@
 
 > 一个丰富的 API 开放调用平台，提供了一些接口调用服务，方便大家使用。
 > 
-> 基于 Spring Boot + Dubbo + Spring Cloud Alibaba + MyBatis Plus + Redis + React 的 API 接口开放调用平台。管理员可以接入并发布接口，可视化各接口调用情况；用户可以登录注册、开通接口调用权限、浏览接口及在线调试，并通过客户端 SDK 轻松调用接口。 
+> 基于 **Spring Boot + Dubbo + Spring Cloud Alibaba + MyBatis Plus + Redis + React** 的 API 接口开放调用平台。管理员可以接入并发布接口，可视化各接口调用情况；用户可以登录注册、开通接口调用权限、浏览接口及在线调试，并通过客户端 SDK 轻松调用接口。 
 >
 > 这是一个全栈前后端分离项目，现已上线，仍有不足和需要扩展的地方，后续还会继续扩展优化。
 >
