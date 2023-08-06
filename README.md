@@ -4,7 +4,7 @@
 >
 > 这是一个全栈前后端分离项目，前端使用 `React`， 后端使用 `Java`，现已上线，后续还会继续扩展优化。
 >
-> 在线体验地址：[Easy API](http://www.api.ggbond.online/)
+> 在线体验地址：[Easy API](http://api.ggbond.online/)
 
 
 
